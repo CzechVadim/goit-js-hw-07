@@ -1,12 +1,10 @@
-"use strict";
+const categoriesAndElements = () => {
+  const categories = document.querySelectorAll(".item");
+  console.log(`В списке ${categories.length} категории`);
 
-const totalCategories = document.querySelectorAll(".item");
-console.log(`В списке ${totalCategories.length} категории.`);
-
-const categoriesArray = [...totalCategories]
-  .map(
-    categories => `Категория: ${categories.children[0].textContent}
-Количество элементов: ${categories.children[1].children.length}`
-  )
-  .join("\n");
-console.log(categoriesArray);
+  categories.forEach(element => {
+      console.log(`Категория: ${element.querySelector("h2").textContent}`);
+      console.log(`В категории: ${element.querySelectorAll("li").length} элементов`);
+  });
+}
+categoriesAndElements();

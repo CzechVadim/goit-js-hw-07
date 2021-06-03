@@ -17,12 +17,14 @@ const images = [
 ];
 
 
-const createGalleryItem = ({ url, alt }) =>
-  `<li><img src="${url}" alt="${alt}" width = 400 height = 350></li>`;
-const galleryMarkup = images.reduce(
-  (acc, item) => acc + createGalleryItem(item),
-  ""
-);
-const galleryList = document.querySelector("#gallery");
-galleryList.insertAdjacentHTML("afterbegin", galleryMarkup);
-galleryList.setAttribute("style", "list-style-type:none; display: flex;");
+
+const list = document.querySelector("#gallery");
+
+const createGallery = (array) => {
+    list.classList.add('gallery')
+    const imagesTags = ({ url, alt }) => `<li><img src='${url}' alt='${alt}' width='310'></li>`;
+    const gallery = images.map(imagesTags).join(" ");
+    list.insertAdjacentHTML('beforeend', gallery);
+}
+
+createGallery(images);
